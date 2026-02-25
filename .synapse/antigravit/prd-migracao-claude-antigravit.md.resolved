@@ -490,6 +490,22 @@ O Claude Code usa um sistema de 3 tiers para ferramentas MCP (Always/Deferred/Vi
 
 ---
 
+### 🔵 Parte 5 — Adaptação do Sistema de Squads (Squad Management)
+
+**Objetivo:** Consolidar e adaptar o fluxo de criação e gestão de squads para o modelo nativo Antigravit, corrigindo referências quebradas e garantindo sincronização com Synkra API.
+
+> [!IMPORTANT]
+> **Interoperabilidade Claude:** Esta adaptação é 100% paralela. O ambiente `.claude/` e seus processos originais permanecem intactos. As mudanças ocorrem exclusivamente em `.antigravity/` e no novo diretório `squads/squad-creator/`.
+
+**Entregas:**
+1. **`squads/squad-creator/`** — Squad mestre orquestrador de projeto (novo path).
+2. **`tasks/create-squad.md`** — Lógica de criação adaptada para Antigravit.
+3. **`tasks/sync-squads.md`** — Integração com Synkra API Marketplace.
+4. **Agentes Mind Cloning** — Adaptação de `@oalanicolas` e `@pedro-valerio`.
+5. **PRD de Adaptação** — [docs/architecture/squad-management-adaptation-prd.md](file:///f:/Projetos%20Códigos/AIOS%20Agentes/modulo-antigravit-001/docs/architecture/squad-management-adaptation-prd.md)
+
+---
+
 ## Validação e Melhores Práticas
 
 ### Critérios de Sucesso

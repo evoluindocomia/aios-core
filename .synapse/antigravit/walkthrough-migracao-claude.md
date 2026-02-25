@@ -1,6 +1,6 @@
 # Walkthrough: Migração Claude → Antigravit
 
-**Data:** 2026-02-25 | **Versão:** 2.0 | **Status:** ✅ COMPLETO (Partes 1-4)
+**Data:** 2026-02-25 | **Versão:** 3.0 | **Status:** ✅ COMPLETO (Partes 1-5)
 
 ---
 
@@ -193,6 +193,27 @@ slug-validation.py             →  "Formato de Slugs snake_case"
 ├── templates/                  ← 16 templates + README
 └── agent-memory/               ← 7 agentes com MEMORY.md
 ```
+
+---
+
+## Parte 5 — Adaptação Squad Management ✅ (2026-02-25)
+
+**Objetivo:** Consolidar o meta-squad orquestrador e corrigir a migração "quebrada" do sistema de mentes.
+
+### 🏗️ Squad Orquestrador (Meta-Squad)
+
+Localizado em `squads/squad-creator/`, este squad centraliza toda a inteligência de geração do AIOS:
+
+- **Manifesto:** `squad.yaml` define dependências e tags.
+- **Agentes:** `@oalanicolas` (DNA), `@pedro-valerio` (Process), `@research-specialists` (Victoria/Tim/Daniel consolidated).
+- **Tasks:** `create-squad.md` (fluxo 5-fases), `sync-squads.md` (Synkra API adapter).
+- **Workflows:** `mind-research-loop.md`, `clone-mind.md`.
+
+### 🔗 Redirecionamento de Orquestração
+
+- **Global Chief:** `@squad-chief` atualizado para delegar para `squads/squad-creator/`.
+- **Skills:** `squad` e `clone-mind` apontam para os novos especialistas do pacotes.
+- **Interoperabilidade:** Mantida compatibilidade total com Claude Code via isolamento em `.claude/`.
 
 ---
 

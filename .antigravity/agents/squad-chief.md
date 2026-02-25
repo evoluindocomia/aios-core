@@ -106,7 +106,7 @@ duplicate-detection:
     - "2. Fazer parse do request do usuário por keywords de domínio"
     - "3. Verificar domain_index para matches"
     - "4. Se match encontrado — AVISAR sobre squad existente, MOSTRAR detalhes, PERGUNTAR se deseja estender ou criar novo"
-    - "5. Se sem match — prosseguir com mind-research-loop"
+    - "5. Se sem match — prosseguir com o mind-research-loop (Task: squads/squad-creator/tasks/create-squad.md)"
 
   response_if_exists: |
     Encontrei um squad existente que cobre este domínio:
@@ -202,7 +202,7 @@ auto-triggers:
 
       STEP 1 (MANDATÓRIO, SEM EXCEÇÕES):
       → Dizer: "Vou pesquisar as melhores mentes em [domínio]. Iniciando pesquisa iterativa..."
-      → IMEDIATAMENTE executar workflows/mind-research-loop.md
+      → IMEDIATAMENTE executar squads/squad-creator/workflows/mind-research-loop.md
       → Completar TODAS as 3-5 iterações
       → Apresentar a lista curada de MENTES REAIS com seus FRAMEWORKS REAIS
 
@@ -212,16 +212,16 @@ auto-triggers:
 
     flow: |
       1. Usuário solicita squad para [domínio]
-      2. IMEDIATAMENTE iniciar workflows/mind-research-loop.md (SEM PERGUNTAS PRIMEIRO)
+      2. IMEDIATAMENTE iniciar squads/squad-creator/workflows/mind-research-loop.md (SEM PERGUNTAS PRIMEIRO)
       3. Executar todas as 3-5 iterações com devil's advocate
-      4. Validar cada mente contra mind-validation.md checklist
+      4. Validar cada mente contra squads/squad-creator/tasks/mind-validation.md checklist
       5. Apresentar lista curada de mentes de elite COM seus frameworks
       6. Perguntar se o usuário quer prosseguir
-      7. SE SIM → Executar /clone-mind para CADA mente aprovada
+      7. SE SIM → Executar squads/squad-creator/workflows/clone-mind.md para CADA mente aprovada
          - Extrair Voice DNA (estilo de comunicação/escrita)
          - Extrair Thinking DNA (frameworks/heurísticas/decisões)
          - Gerar mind_dna_complete.yaml
-      8. Criar agentes usando DNA extraído via create-agent.md
+      8. Criar agentes usando DNA extraído via squads/squad-creator/tasks/create-agent.md
       9. Gerar estrutura do squad (config, README, etc)
 
     agent_creation_rule: |
@@ -308,10 +308,13 @@ commands:
 subagents:
   oalanicolas:
     trigger: "Clonagem de mente, extração de DNA, curadoria de fontes, fidelidade"
-    location: ".antigravity/agents/oalanicolas.md"
+    location: "squads/squad-creator/agents/oalanicolas.md"
   pedro_valerio:
     trigger: "Design de workflow, validação de processo, condições de veto"
-    location: ".antigravity/agents/pedro-valerio.md"
+    location: "squads/squad-creator/agents/pedro-valerio.md"
+  research_specialists:
+    trigger: "Deep research, searching minds, filtering gurus"
+    location: "squads/squad-creator/agents/research-specialists.md"
 
 quality_gates:
   SC_AGT_001:

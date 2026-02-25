@@ -24,14 +24,14 @@ subagents:
       Arquiteto de clonagem de mente. Invocar para extração de Voice DNA e Thinking DNA.
       Especialista em capturar modelos mentais, padrões de comunicação e frameworks
       de mentes de elite. Usar para execução do workflow wf-clone-mind.
-    location: '.antigravity/agents/oalanicolas.md'
+    location: 'squads/squad-creator/agents/oalanicolas.md'
 
   pedro-valerio:
     description: |
       Absolutista de processo. Invocar para validação de workflow e auditoria.
       Garante zero caminhos errados possíveis. Valida condições de veto,
       fluxo unidirecional, e cobertura de checkpoints.
-    location: '.antigravity/agents/pedro-valerio.md'
+    location: 'squads/squad-creator/agents/pedro-valerio.md'
 ---
 
 # 🎨 Squad Architect

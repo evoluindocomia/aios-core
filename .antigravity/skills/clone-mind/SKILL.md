@@ -40,23 +40,21 @@ Executar o pipeline DNA Mental™ de 9 camadas para criar clones cognitivos de a
 
 ```
 FASE 1: PESQUISA
-  └─ @victoria-viability-specialist → L0: Avaliação de viabilidade
-  └─ @research-specialist (Tim)     → L1: Coleta e validação de fontes
+  └─ @research-specialists (Victoria/Tim/Daniel) → Pesquisa, Viabilidade e Filtro
 
 FASE 2: ANÁLISE (Paralela)
-  └─ @daniel-behavioral-analyst     → L2-L3: Padrões comportamentais
-  └─ @barbara-cognitive-architect   → L4-L5: Modelos mentais
+  └─ @research-specialists (Tim/Daniel) → Extração de Padrões e Heurísticas
+  └─ @oalanicolas                   → Extração de DNA Mental™
   └─ @identity-analyst (Brené)      → L6-L8: Identity Core 🔴 CHECKPOINT HUMANO
 
 FASE 3: SÍNTESE
-  └─ @charlie-synthesis-expert      → L9: Integração Latticework
+  └─ @oalanicolas                   → Consolidação do DNA
 
 FASE 4: IMPLEMENTAÇÃO
-  └─ @constantin-implementation-architect → System Prompt
+  └─ @squad-chief                   → Geração do Agente (Task: create-agent.md)
 
 FASE 5: VALIDAÇÃO DE QUALIDADE
-  └─ @quinn-quality-specialist      → Quality Gates (fidelidade ≥ 90%)
-  └─ @victoria-viability-specialist → Production Readiness
+  └─ @pedro-valerio                 → Quality Gates (fidelidade ≥ 90%)
 ```
 
 ## Protocolo de Execução
@@ -171,16 +169,12 @@ outputs/minds/{slug}/
 
 ## Agentes Legendários
 
-| Agente     | Especialidade                                    |
-| ---------- | ------------------------------------------------ |
-| Victoria   | Avaliação de viabilidade, production readiness   |
-| Tim        | Coleta de fontes, validação, triangulação        |
-| Daniel     | Padrões comportamentais, transições de estado    |
-| Barbara    | Modelos mentais, frameworks cognitivos           |
-| Brené      | Valores, obsessões, contradições (Identity Core) |
-| Charlie    | Integração de conhecimento, latticework          |
-| Constantin | System prompts, implementação                    |
-| Quinn      | Validação de qualidade, score de fidelidade      |
+| Agente               | Especialidade                                    |
+| -------------------- | ------------------------------------------------ |
+| research-specialists | Pesquisa, Frameworks e Devil's Advocate          |
+| oalanicolas          | Extração de DNA Mental™ (Voice/Thinking)         |
+| pedro-valerio        | Validação de processos e Quality Gates           |
+| Brené (Identity)     | Valores, obsessões, contradições (Identity Core) |
 
 ## Quality Gates
 
