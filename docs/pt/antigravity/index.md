@@ -31,7 +31,7 @@ O **Antigravity** é o ambiente de configuração do AIOS para o **Google Gemini
 | Arquivo master        | `.claude/CLAUDE.md`           | `.antigravity/ANTIGRAVITY.md`          |
 | Hooks automáticos     | 6 scripts Python (PreToolUse) | `governance.md` instrucional           |
 | Geração de imagens    | ❌ N/A                        | ✅ `generate_image`                    |
-| Design de UI          | ❌ N/A                        | ✅ `mcp_stitch_*` (Stitch MCP)         |
+| Design de UI          | ❌ N/A                        | ✅ `@ui-builder` + `mcp_stitch_*`      |
 | Automação de browser  | ❌ N/A                        | ✅ `browser_subagent` (com vídeo WebP) |
 | Memória cross-session | MEMORY.md por agente          | KI System + MEMORY.md                  |
 | Workflows disponíveis | 14 workflows via `.claude/`   | ✅ 14 workflows em `.antigravity/`     |
@@ -132,6 +132,7 @@ O **Antigravity** é o ambiente de configuração do AIOS para o **Google Gemini
 @analyst      → Zara (Análise)
 @data-engineer → Dara (Banco de dados)
 @ux           → Uma (UX/UI Design)
+@ui-builder   → Construtor de UI Autônomo (Google Stitch)
 @devops       → Gage (DevOps + git push exclusivo)
 @brad-frost   → Brad Frost (Design System)
 @squad-chief  → Squad Architect 🎨

@@ -50,9 +50,13 @@ O @architect vai:
 
 ---
 
-## Step 3: Desenvolvimento (@dev)
+## Step 3: Desenvolvimento (@dev ou @ui-builder)
 
+**Para lógicas, backend ou stories genéricas:**
 **Invocar @dev com Mission: `develop-story`**
+
+**Para stories focadas em Frontend/UI (com ui-guidelines.yaml):**
+**Invocar @ui-builder com Mission: `develop-story`**
 
 ```
 Mission: develop-story
@@ -60,7 +64,7 @@ Story: [path da story]
 Context: Implementar todos os acceptance criteria da story
 ```
 
-O @dev vai:
+O agente executor (@dev ou @ui-builder) vai:
 
 1. Carregar contexto (git status, gotchas, technical preferences)
 2. Seguir protocolo IDS (REUSE > ADAPT > CREATE)

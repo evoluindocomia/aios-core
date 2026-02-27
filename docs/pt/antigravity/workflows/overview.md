@@ -33,7 +33,7 @@ description: breve descrição do workflow
 | ---------------------- | ---------------------------------- | ---------------------------------------------------------------- |
 | `greenfield-fullstack` | Nova aplicação full-stack do zero  | `@analyst → @pm → @ux → @architect → @po → @dev → @qa → @devops` |
 | `greenfield-service`   | Novo backend/API do zero           | `@architect → @data-engineer → @dev → @qa`                       |
-| `greenfield-ui`        | Novo frontend/landing page do zero | `@ux → @dev → @qa` (+ Stitch MCP)                                |
+| `greenfield-ui`        | Novo frontend/landing page do zero | `@ux → @ui-builder → @qa` (+ Stitch MCP)                         |
 
 ### Brownfield — Projetos Existentes
 
@@ -42,22 +42,23 @@ description: breve descrição do workflow
 | `brownfield-discovery` | Novo no projeto — precisa entender | `@architect → @analyst → @data-engineer → @ux` |
 | `brownfield-fullstack` | Adicionar feature full-stack       | `@architect → @dev → @qa → @devops`            |
 | `brownfield-service`   | Adicionar endpoint/serviço         | `@data-engineer → @dev → @qa`                  |
-| `brownfield-ui`        | Adicionar página/componente        | `@ux → @dev → @qa` (+ browser_subagent)        |
+| `brownfield-ui`        | Adicionar página/componente        | `@ux → @ui-builder → @qa` (+ browser_subagent) |
 
 ### Desenvolvimento e Qualidade
 
-| Workflow                  | Quando Usar                         | Responsável                                |
-| ------------------------- | ----------------------------------- | ------------------------------------------ |
-| `story-development-cycle` | Implementar uma story               | `@sm → @po → @dev → @qa → @devops`         |
-| `spec-pipeline`           | Ideia → backlog completo            | `@pm → @analyst → @architect → @po → @dev` |
-| `epic-orchestration`      | Executar épico completo             | `@po → @sm → @dev → @qa → @devops`         |
-| `qa-loop`                 | QA reprovou → corrigir e re-validar | `@qa → @dev → @qa` (máx. 5 iterações)      |
+| Workflow                  | Quando Usar                         | Responsável                                        |
+| ------------------------- | ----------------------------------- | -------------------------------------------------- |
+| `story-development-cycle` | Implementar uma story               | `@sm → @po → @dev`/`@ui-builder` `→ @qa → @devops` |
+| `spec-pipeline`           | Ideia → backlog completo            | `@pm → @analyst → @architect → @po → @dev`         |
+| `epic-orchestration`      | Executar épico completo             | `@po → @sm → @dev → @qa → @devops`                 |
+| `qa-loop`                 | QA reprovou → corrigir e re-validar | `@qa → @dev → @qa` (máx. 5 iterações)              |
 
 ### Especiais
 
 | Workflow              | Quando Usar                          | Responsável                      |
 | --------------------- | ------------------------------------ | -------------------------------- |
 | `design-system-build` | Criar ou refatorar design system     | `@ux → @brad-frost → @dev → @qa` |
+| `stitch-ui-workflow`  | Pipeline mandatório para gerar telas | `@ui-builder` orquestrando MCP   |
 | `create-squad`        | Criar squad de especialistas         | `@squad-chief → @oalanicolas`    |
 | `auto-worktree`       | Desenvolvimento paralelo de features | `@devops`                        |
 
@@ -93,20 +94,20 @@ O workflow mais usado — governa o ciclo completo de desenvolvimento de uma fea
   ↓
 @po *validate
   ↓
-@dev *develop
+@dev *develop (Lados lógicos/backend) OU @ui-builder (Telas e frontend via Stitch MCP)
   ↓
 @qa *qa-gate
   ↓
 @devops *push
 ```
 
-| Etapa    | Agente    | Artefato                      | Critério de Saída                 |
-| -------- | --------- | ----------------------------- | --------------------------------- |
-| Draft    | `@sm`     | Story em `docs/stories/`      | Story com critérios iniciais      |
-| Validate | `@po`     | Story com acceptance criteria | ACs mensuráveis e completos       |
-| Develop  | `@dev`    | Código implementado           | Todos os ACs cobertos             |
-| QA Gate  | `@qa`     | Relatório de qualidade        | lint ✅ + typecheck ✅ + tests ✅ |
-| Push     | `@devops` | PR criado / branch pushed     | Remote atualizado                 |
+| Etapa    | Agente               | Artefato                      | Critério de Saída                 |
+| -------- | -------------------- | ----------------------------- | --------------------------------- |
+| Draft    | `@sm`                | Story em `docs/stories/`      | Story com critérios iniciais      |
+| Validate | `@po`                | Story com acceptance criteria | ACs mensuráveis e completos       |
+| Develop  | `@dev`/`@ui-builder` | Código implementado           | Todos os ACs cobertos             |
+| QA Gate  | `@qa`                | Relatório de qualidade        | lint ✅ + typecheck ✅ + tests ✅ |
+| Push     | `@devops`            | PR criado / branch pushed     | Remote atualizado                 |
 
 ---
 

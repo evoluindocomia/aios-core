@@ -1,30 +1,44 @@
-# Governance — Governança Automática
+# Governance — AIOS Governance Pipeline (AGP)
 
 > **Origem:** Este arquivo substitui os **6 hooks Python** (PreToolUse) do Claude Code.  
-> Como o Antigravit não possui sistema de interceptação automática de ferramentas, estas verificações são aplicadas **proativamente** pelo agente antes de cada operação crítica.
+> Como o Antigravit não possui sistema de interceptação automática de ferramentas, estas verificações são aplicadas **proativamente** pelo agente antes de cada operação crítica através do AGP (`.antigravity/skills/governance/SKILL.md`).
 
 ---
 
-## Como Funciona
+## O que é o AGP?
 
-No Claude Code, haviam scripts Python que **bloqueavam automaticamente** operações indesejadas antes de executarem:
+O AIOS Governance Pipeline (AGP) é o mecanismo de avaliação executado por agentes antes de efetuarem ações potencialmente destrutivas ou foras da convenção de código. Diferente do Claude Code em que tudo era checado passivamente, aqui o pipeline é acionado diretamente e instrucionalmente através da `skill: governance`.
 
-```
-enforce-architecture-first.py  → bloqueava writes sem doc aprovada
-mind-clone-governance.py       → bloqueava criação sem DNA
-sql-governance.py              → bloqueava SQL DDL direto
-enforce-git-push-authority.sh  → bloqueava push de não-devops
-write-path-validation.py       → validava paths de documentos
-slug-validation.py             → validava formato de slugs
-```
+O resultado de governança opera com três `outputs` possíveis, controlados no arquivo raiz [governance-config.md](../../../.antigravity/rules/governance-config.md):
 
-No Antigravit, **essas regras vivem em `governance.md`** e são verificadas instrucionalmente pelo agente (sem automação, mas com cobertura de ~95% dos casos).
+- **ALLOWED**: Operação livre; o pipeline encerra em sucesso.
+- **REQUIRES_APPROVAL**: O agente é instruído a parar e perguntar ao usuário (`notify_user` com `BlockedOnUser=true`) justificando a intenção de sobrepor a regra.
+- **BLOCKED**: O agente é instruído a abortar imediatamente a intenção, provendo um alerta ao usuário da proibição explícita.
 
 ---
 
-## Verificações Obrigatórias
+## Como Funciona vs Claude Code
+
+No Claude Code, haviam scripts Python que **bloqueavam automaticamente** operações indesejadas antes de executarem. No Antigravity, suas lógicas foram migradas para `Tasks` de validação em Markdown:
+
+| Claude Code (Hooks PreToolUse)  | Antigravity (AGP Tasks)       |
+| ------------------------------- | ----------------------------- |
+| `enforce-architecture-first.py` | `check-architecture-first.md` |
+| `mind-clone-governance.py`      | `check-mind-clone-dna.md`     |
+| `sql-governance.py`             | `check-sql-governance.md`     |
+| `enforce-git-push-authority.sh` | `check-git-push-authority.md` |
+| `write-path-validation.py`      | `check-write-path.md`         |
+| `slug-validation.py`            | `check-slug-format.md`        |
+
+Em caso de dúvidas nos resultados aplicados pelo ambiente, valide regras diretamente invocando: `→ skill: governance`
+
+---
+
+## Verificações Obrigatórias (Tasks Mapeadas)
 
 ### 🔴 Antes de ESCREVER em paths protegidos
+
+**Task AGP Associada**: `check-architecture-first`
 
 **Gatilho:** `write_to_file` ou `replace_file_content` em:
 
@@ -55,6 +69,8 @@ package.json   |  tsconfig.json  |  .env  |  README.md
 
 ### 🔴 Antes de CRIAR agente em `squads/*/agents/*.md`
 
+**Task AGP Associada**: `check-mind-clone-dna`
+
 **Gatilho:** `write_to_file` criando novo `.md` em diretório `squads/*/agents/`
 
 **Checklist — verificar se é agente funcional:**
@@ -80,6 +96,8 @@ package.json   |  tsconfig.json  |  .env  |  README.md
 ---
 
 ### 🔴 Antes de EXECUTAR SQL DDL via `run_command`
+
+**Task AGP Associada**: `check-sql-governance`
 
 **Gatilho:** `run_command` contendo qualquer SQL DDL
 
@@ -109,6 +127,8 @@ SELECT / INSERT / UPDATE        # DML é permitido
 
 ### 🔴 Antes de GIT PUSH
 
+**Task AGP Associada**: `check-git-push-authority`
+
 **Gatilho:** `run_command` com `git push`
 
 **Verificação:**
@@ -132,6 +152,8 @@ npm test             # ✅ deve passar
 ---
 
 ### 🟡 Antes de CRIAR ou REMOVER Git Worktrees
+
+**Task AGP Associada**: `check-git-push-authority`
 
 **Gatilho:** `run_command` com `git worktree add` ou `git worktree remove`
 
@@ -162,7 +184,7 @@ Se SIM → Seguir protocolo do workflow `auto-worktree.md`.
 Se SIM → Prosseguir normalmente.
 Se NÃO → Alertar: use Stitch MCP apenas no contexto de workflows de UI/Design System.
 
-Verificar se o tipo de documento está no path correto:
+Verificar se o tipo de documento está no path correto (**Task AGP Associada**: `check-write-path`):
 
 | Tipo de Documento   | Path Correto                                        |
 | ------------------- | --------------------------------------------------- |
@@ -177,6 +199,8 @@ Se o documento parece estar no path errado → alertar antes de salvar.
 ---
 
 ### 🟡 Formato de Slugs e IDs
+
+**Task AGP Associada**: `check-slug-format`
 
 **Regra:** Todos os slugs e IDs devem ser `snake_case`
 

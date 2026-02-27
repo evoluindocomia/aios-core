@@ -81,7 +81,7 @@ Define quando e como carregar a memória persistente.
 
 > Este é o arquivo mais crítico de operação. Ver documentação completa: [Governance](./governance.md)
 
-Substitui os **6 hooks Python** do Claude Code por um sistema instrucional de verificações obrigatórias.
+Substitui os **6 hooks Python** do Claude Code por um sistema instrucional de verificações obrigatórias gerenciado pela skill de governança, formando o AGP (AIOS Governance Pipeline).
 
 ---
 

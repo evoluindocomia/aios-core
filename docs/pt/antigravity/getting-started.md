@@ -80,7 +80,7 @@ Antes de invocar um agente, identifique o workflow para sua situação:
   → greenfield-service.md
 
 "Quero criar só um frontend/landing page"
-  → greenfield-ui.md  (+ design com Stitch MCP)
+  → greenfield-ui.md  (+ design com Stitch MCP via @ui-builder)
 ```
 
 ### Projeto existente
@@ -110,7 +110,7 @@ Antes de invocar um agente, identifique o workflow para sua situação:
   → epic-orchestration.md
 
 "Tenho uma story → quero implementar"
-  → story-development-cycle.md (SDC)
+  → story-development-cycle.md (SDC - Usa @dev ou @ui-builder)
 
 "QA reprovou → preciso corrigir e re-validar"
   → qa-loop.md  (máximo 5 iterações, escalação automática)
@@ -134,6 +134,7 @@ Use o prefixo `@` para invocar qualquer agente:
 @analyst       → Zara, pesquisa e análise
 @data-engineer → Dara, banco de dados e schema
 @ux            → Uma, UX/UI design
+@ui-builder    → Construtor Autônomo de Interface (Google Stitch)
 @devops        → Gage, CI/CD e git push
 @brad-frost    → Brad Frost, Design System (Atomic Design)
 @squad-chief   → Squad Architect 🎨
@@ -174,7 +175,7 @@ O **Story Development Cycle** é o fluxo padrão para implementar qualquer featu
 ```
 1. @sm *draft         → Rascunha a story com contexto do épico
 2. @po *validate      → Valida acceptance criteria (GO / NO-GO)
-3. @dev *develop      → Implementa (modo Interactive ou YOLO)
+3. @dev *develop      → Implementa lógica/backend (ou @ui-builder para telas)
 4. @qa *qa-gate       → Quality gate — PASS / CONCERNS / FAIL
 5. @devops *push      → Push para remote (autoridade exclusiva)
 ```
@@ -217,9 +218,9 @@ Capacidades que o Claude Code **não possui**:
 ### Design de UI com Stitch MCP
 
 ```
-@ux gere as telas principais do dashboard baseadas na front-end-spec
+@ui-builder gere as telas principais do dashboard baseadas na front-end-spec
 → Usa: mcp_stitch_generate_screen_from_text()
-→ Cria wireframes de alta fidelidade sem ferramentas externas
+→ Cria wireframes e código base de alta fidelidade sem ferramentas externas
 ```
 
 ### Automação de Browser

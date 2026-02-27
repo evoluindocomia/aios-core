@@ -16,7 +16,8 @@ The 11 fundamental agents of Synkra AIOS, all available in any project with the 
 | `@sm`                   | River              | Scrum Master                    | `view_file`, model: `gemini-2.0-flash`        |
 | `@analyst`              | Zara               | Research & Intelligence         | `search_web`, `read_url_content`              |
 | `@data-engineer`        | Dara               | Database Design                 | `run_command` (supabase), SQL governance      |
-| `@ux`                   | Uma                | UX/UI Design                    | `generate_image`, `mcp_stitch_*`              |
+| `@ux`                   | Uma                | UX/UI Design (Concepts)         | `generate_image`, `mcp_stitch_*`              |
+| `@ui-builder`           | Stitch Architect   | Autonomous UI Builder           | `mcp_stitch_*`, `read_file`                   |
 | `@devops`               | Gage               | CI/CD, Git push (**EXCLUSIVE**) | `run_command` (git), `.github/`               |
 | `@brad-frost`           | Brad Frost         | Design System & Atomic Design   | `mcp_stitch_*`, `generate_image`              |
 | `@squad-chief`          | Squad Architect 🎨 | Squad & Mind Creation           | `search_web`, `write_to_file`                 |
@@ -35,8 +36,10 @@ Dex is responsible for all code implementation. He follows the **REUSE > ADAPT >
 **Scope:**
 
 - `packages/`, `.aios-core/core/`, `bin/`
+- Business Logic, APIs, Scripts, and Backend in general.
 - Feature implementation from validated Stories.
 - Refactoring and maintenance.
+- **Important Note:** `@dev` is strictly focused on logic and backend. Heavy front-end components, layouts, and screens based on UI guidelines must be handed over to the **`@ui-builder`** agent.
 
 ---
 
@@ -88,9 +91,30 @@ Uma is highly enriched in the Antigravity migration, featuring native access to 
 **Exclusive Tools:**
 
 - `generate_image` (Assets/Mockups)
-- `mcp_stitch_*` (Professional Screen Generation)
+- `mcp_stitch_*` (Professional Screen Concepts)
 
-**Works with:** `@brad-frost` for Atomic Design System workflows.
+**Works with:** `@brad-frost` for Atomic Design System workflows, and `@ui-builder` for actual screen implementation code.
+
+---
+
+### `@ui-builder` — Stitch Architect (UI Builder)
+
+**File:** `.antigravity/agents/ui-builder.md`
+
+The `@ui-builder` is the ultimate UI and frontend specialist. When a Sprint requires component and visual creations, the story is routed from `@dev` to `@ui-builder`.
+
+**Core Heuristics:**
+
+1. Mandatory read of the constraints file (`ui-guidelines.yaml`).
+2. Exclusive delegation of static layouts and structures to the **Google Stitch (MCP)** tool, preventing the agent from hallucinating CSS manually.
+3. Focuses on Business Binding (Hooks, Routing, APIs) only in the post-Stitch phase.
+
+**Exclusive Tools:**
+
+```
+mcp_stitch_*
+view_file
+```
 
 ---
 

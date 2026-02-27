@@ -65,7 +65,8 @@ O @architect vai:
 1. Analisar PRD para viabilidade técnica
 2. Identificar riscos arquiteturais
 3. Sugerir abordagem técnica
-4. Aprovar ou solicitar revisões
+4. **[Antigravity Exclusivo] Integração Stitch UI:** Se a seção `stitch-ui-guidelines` estiver habilitada no PRD, gerar obrigatoriamente o arquivo `docs/architecture/ui-guidelines.yaml` com as restrições e design system definidos, parametrizando a geração autônoma de interface para as squads futuras.
+5. Aprovar ou solicitar revisões
 
 **Se NEEDS_REVISION:** Loop para @pm ajustar PRD.
 **Se APPROVED:** Continuar para Step 4.

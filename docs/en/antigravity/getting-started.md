@@ -80,7 +80,7 @@ Before invoking an agent, identify the right workflow for your situation:
   → greenfield-service.md
 
 "I need only a frontend/landing page"
-  → greenfield-ui.md  (+ Stitch MCP for UI generation)
+  → greenfield-ui.md  (+ Stitch MCP via @ui-builder)
 ```
 
 ### Existing project
@@ -110,7 +110,7 @@ Before invoking an agent, identify the right workflow for your situation:
   → epic-orchestration.md
 
 "I have a story → I want to implement it"
-  → story-development-cycle.md (SDC)
+  → story-development-cycle.md (SDC - Uses @dev or @ui-builder)
 
 "QA failed → I need to fix and re-validate"
   → qa-loop.md  (max 5 iterations, automatic escalation)
@@ -134,6 +134,7 @@ Use the `@` prefix to invoke any agent:
 @analyst       → Zara, research & analysis
 @data-engineer → Dara, database & schema
 @ux            → Uma, UX/UI design
+@ui-builder    → Autonomous UI Builder (Google Stitch)
 @devops        → Gage, CI/CD and git push
 @brad-frost    → Brad Frost, Design System (Atomic Design)
 @squad-chief   → Squad Architect 🎨
@@ -174,7 +175,7 @@ The **Story Development Cycle** is the standard flow for implementing any featur
 ```
 1. @sm *draft         → Outlines the story with epic context
 2. @po *validate      → Validates acceptance criteria (GO / NO-GO)
-3. @dev *develop      → Implements (Interactive or YOLO mode)
+3. @dev *develop      → Implements logic/backend (or @ui-builder for UI screens)
 4. @qa *qa-gate       → Quality gate — PASS / CONCERNS / FAIL
 5. @devops *push      → Push to remote (exclusive authority)
 ```
@@ -217,9 +218,9 @@ Capabilities that Claude Code **does not have**:
 ### UI Design with Stitch MCP
 
 ```
-@ux generate the main dashboard screens based on the front-end-spec
+@ui-builder generate the main dashboard screens based on the front-end-spec
 → Uses: mcp_stitch_generate_screen_from_text()
-→ Creates high-fidelity wireframes without external tools
+→ Creates high-fidelity wireframes and raw code without external tools
 ```
 
 ### Browser Automation

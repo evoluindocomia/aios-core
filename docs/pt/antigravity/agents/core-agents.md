@@ -16,7 +16,8 @@ Os 11 agentes fundamentais do Synkra AIOS, todos disponíveis em qualquer projet
 | `@sm`                   | River              | Scrum Master                    | `view_file`, modelo: `gemini-2.0-flash`       |
 | `@analyst`              | Alex               | Pesquisa e análise              | `search_web`, `read_url_content`              |
 | `@data-engineer`        | Dara               | Database design                 | `run_command` (supabase), SQL governance      |
-| `@ux-design-expert`     | Uma                | UX/UI design                    | `generate_image`, `mcp_stitch_*`              |
+| `@ux-design-expert`     | Uma                | UX/UI design (Conceitos)        | `generate_image`, `mcp_stitch_*`              |
+| `@ui-builder`           | Stitch Architect   | Construtor Autônomo de Telas    | `mcp_stitch_*`, `read_file`                   |
 | `@devops`               | Gage               | CI/CD, git push (**EXCLUSIVO**) | `run_command` (git), `.github/`               |
 | `@squad-chief`          | Squad Architect 🎨 | Criação de squads e mind clones | `search_web`, `write_to_file`                 |
 | `@research-specialists` | Research Team 🔍   | Deep research e frameworks      | `search_web`, `read_url_content`              |
@@ -34,8 +35,10 @@ Responsável por toda implementação de código. Segue o princípio **REUSE > A
 **Escopo:**
 
 - `packages/`, `.aios-core/core/`, `bin/`
+- Lógicas de Negócios, scripts, APIs, e back-end em geral.
 - Implementar features a partir de stories aprovadas pelo `@po`
 - Refatoração e manutenção de código existente
+- **Nota Importante:** O `@dev` é estritamente focado em back-end e lógica. Projetos front-end ricos, mockups e telas baseadas em UI guidelines devem ser repassados para a esteira do **`@ui-builder`**.
 
 **Ferramentas nativas configuradas:**
 
@@ -193,7 +196,28 @@ mcp_stitch_list_screens       → Listar telas
 **Uso típico:**
 
 ```
-@ux-design-expert crie 3 variações da tela de onboarding usando Stitch
+@ux-design-expert crie os conceitos visuais e os recursos da tela de onboarding
+```
+
+---
+
+### `@ui-builder` — Construtor de Telas (Stitch Architect)
+
+**Arquivo:** `.antigravity/agents/ui-builder.md`
+
+O `@ui-builder` é o especialista máximo em Frontend visual. Quando uma Sprint demanda criação ou refatoração visual, a story é redirecionada do `@dev` para ele.
+
+**Heurísticas nativas:**
+
+1. Obrigatoriedade de leitura do arquivo de restrições (`ui-guidelines.yaml`).
+2. Delegação exclusiva do layout estático e estrutural para a ferramenta **Google Stitch (MCP)** sem alucinar CSS manualmente.
+3. Atuação focada em Business Binding (Hooks, Roteamento, APIs) apenas na fase pós-Stitch.
+
+**Ferramentas Exclusivas:**
+
+```
+mcp_stitch_*
+view_file
 ```
 
 ---

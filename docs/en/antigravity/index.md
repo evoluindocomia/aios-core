@@ -31,7 +31,7 @@
 | Master file          | `.claude/CLAUDE.md`           | `.antigravity/ANTIGRAVITY.md`          |
 | Automatic hooks      | 6 Python scripts (PreToolUse) | Instructional `governance.md`          |
 | Image generation     | ❌ N/A                        | ✅ `generate_image`                    |
-| UI Design            | ❌ N/A                        | ✅ `mcp_stitch_*` (Stitch MCP)         |
+| UI Design            | ❌ N/A                        | ✅ `@ui-builder` + `mcp_stitch_*`      |
 | Browser automation   | ❌ N/A                        | ✅ `browser_subagent` (WebP recording) |
 | Cross-session memory | MEMORY.md per agent           | KI System + MEMORY.md                  |
 | Available Workflows  | 14 workflows via `.claude/`   | ✅ 14 workflows in `.antigravity/`     |
@@ -85,7 +85,7 @@ All 28+ agents — Core AIOS roles, Chiefs, Mind Clones, and Special agents.
 
 ### [3. Rules & Governance](./rules/overview.md)
 
-How Antigravity ensures quality and security: SQL, git push, worktrees, Stitch MCP.
+How Antigravity ensures quality and security: AGP (AIOS Governance Pipeline), Agent Authority, Handoff rules, etc.
 
 ### [4. Skills & Capabilities](./skills/overview.md)
 
@@ -133,6 +133,7 @@ Lessons learned and technical mapping for teams transitioning from Claude.
 @analyst      → Zara (Research & Analysis)
 @data-engineer → Dara (Database)
 @ux           → Uma (UX/UI Design)
+@ui-builder   → Autonomous UI Builder (Google Stitch)
 @devops       → Gage (DevOps + exclusive git push)
 @brad-frost   → Brad Frost (Design System)
 @squad-chief  → Squad Architect 🎨
