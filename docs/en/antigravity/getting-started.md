@@ -263,6 +263,36 @@ To work on multiple features simultaneously:
 
 ---
 
+## 11. Local Testing and Validation of the Installer
+
+If you are contributing to AIOS development or need to validate the installer locally without publishing it to NPM, you can use two main strategies:
+
+### Option 1: Packaging Simulation via NPM Pack (Recommended)
+
+This option exactly simulates the end-user behavior unpacking the package via `npx`.
+
+1. In the original project root (where the main `aios-core` `package.json` is located), run:
+   ```bash
+   npm pack
+   ```
+2. A `.tgz` file will be generated (e.g., `aios-core-4.4.6.tgz`).
+3. In a separate test environment folder, execute the command pointing to the local file:
+   ```bash
+   npx "/absolute/path/to/aios-core-4.4.6.tgz" init my-test-project
+   ```
+
+### Option 2: Direct Node Execution (For Debugging)
+
+This option is ideal for inspecting the code line by line using breakpoints in your IDE (e.g., VSCode).
+
+1. Create an isolated test folder.
+2. From that folder's terminal (or via your IDE's `launch.json`), execute the main Javascript file directly via Node:
+   ```bash
+   node "/absolute/path/to/aios-core/bin/aios.js" init my-test-project
+   ```
+
+---
+
 ## Next Steps
 
 - [Agent System](./agents/overview.md) — Full hierarchy of 28+ agents
@@ -271,6 +301,8 @@ To work on multiple features simultaneously:
 - [Tool Mapping](./tools/tool-mapping.md) — All available tools
 - [Templates](./templates/overview.md) — 16 ready-to-use templates
 - [Migration from Claude](./migration/from-claude.md) — Differences and adaptations
+- [Design System orchestration using Stitch MCP with autonomous screen generation](./workflows/overview.md#design-system-build--design-system-with-stitch-mcp)
+- [Creating new Mind Clones based on actual real-life profiles](./agents/mind-clones.md)
 
 ---
 

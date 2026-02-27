@@ -263,6 +263,36 @@ Para trabalhar em múltiplas features simultaneamente:
 
 ---
 
+## 11. Testes e Validação Local do Instalador
+
+Caso você esteja contribuindo para o desenvolvimento do AIOS ou precise validar o instalador localmente sem publicá-lo no NPM, você pode utilizar duas estratégias principais:
+
+### Opção 1: Simulação de Empacotamento via NPM Pack (Recomendado)
+
+Esta opção simula exatamente o comportamento do usuário final descompactando o pacote via `npx`.
+
+1. Na raiz do projeto original (onde está o `package.json` principal do `aios-core`), execute:
+   ```bash
+   npm pack
+   ```
+2. Um arquivo `.tgz` será gerado (ex: `aios-core-4.4.6.tgz`).
+3. Em uma pasta de ambiente de testes separada, execute o comando apontando para o arquivo local:
+   ```bash
+   npx "/caminho/absoluto/para/aios-core-4.4.6.tgz" init meu-projeto-teste
+   ```
+
+### Opção 2: Execução Direta Node (Para Debugging)
+
+Esta opção é ideal para inspecionar o código linha a linha usando _breakpoints_ na sua IDE (ex: VSCode).
+
+1. Crie uma pasta de testes isolada.
+2. A partir do terminal dessa pasta (ou via `launch.json` da sua IDE), execute o arquivo Javascript principal diretamente via Node:
+   ```bash
+   node "/caminho/absoluto/para/aios-core/bin/aios.js" init meu-projeto-teste
+   ```
+
+---
+
 ## Próximos Passos
 
 - [Sistema de Agentes](./agents/overview.md) — Hierarquia completa dos 28+ agentes
@@ -271,6 +301,8 @@ Para trabalhar em múltiplas features simultaneamente:
 - [Mapeamento de Ferramentas](./tools/tool-mapping.md) — Todas as ferramentas disponíveis
 - [Templates](./templates/overview.md) — 16 templates prontos para usar
 - [Migração do Claude](./migration/from-claude.md) — Diferenças e adaptações
+- [A orquestração do Design System usando Stitch MCP e geração autônoma de telas](./workflows/overview.md#design-system-build--design-system-with-stitch-mcp)
+- [Criação de novos Mind Clones baseados em perfis de pessoas reais](./agents/mind-clones.md)
 
 ---
 
