@@ -4,11 +4,11 @@ Welcome to the definitive step-by-step guide to get started with the AIOS **Anti
 
 ---
 
-## 1. Initial Setup and Gap Resolution
+## 1. Installation and Initial Setup
 
-Currently, the `aios-core init` command might not copy all files from the `.antigravity/` environment to your workspace due to packaging limitations (`package.json`). Follow the steps below to ensure a flawless installation.
+In the latest versions, the `aios-core init` command automatically configures the `.antigravity/` environment in your workspace, and IDE synchronization is enabled by default.
 
-### FAIL-SAFE INSTALLATION STEP-BY-STEP
+### INSTALLATION STEP-BY-STEP
 
 1. **Install AIOS normally in your directed folder:**
 
@@ -17,15 +17,18 @@ Currently, the `aios-core init` command might not copy all files from the `.anti
    cd my-project
    ```
 
-2. **Copy the Antigravity environment (WORKAROUND GAP-02):**
-   If the `.antigravity/` folder wasn't comprehensively copied, you must manually copy the source `.antigravity/` directory in its entirety (which includes `agents/`, `rules/`, `skills/`, `workflows/`, `templates/`, and the `ANTIGRAVITY.md` file) from the `aios-core` origin to the root of your `my-project`.
+   _Note:_ The `.antigravity/` directory (including `agents/`, `rules/`, `skills/`, `workflows/`, `templates/`, and the `ANTIGRAVITY.md` file) will be automatically copied to your new project.
 
-3. **IDE Synchronization (WORKAROUND GAP-03):**
-   If the synchronization command (`npm run sync:ide`) or standard _lint-staged_ routines do not automatically include the Antigravity folders, make sure to add them manually to the configuration scripts if you notice desynchronizations between your IDE and `MEMORY.md`.
+2. **IDE Synchronization:**
+   The synchronization command automatically includes the Antigravity profile natively. Run the validation if necessary:
+
+   ```bash
+   npm run validate:antigravity-sync
+   ```
 
 ---
 
-## 2. API Keys Configuration (GAP-04)
+## 2. API Keys Configuration
 
 For Antigravity to fully utilize the core intelligence engine and advanced ecosystem integrations (such as interface generators and web search), you must ensure that your main provider is Gemini and that your API key is actively in your environment.
 
@@ -71,7 +74,7 @@ To trigger AIOS magic, your starting point is always to call upon initial orches
 **The agent is missing governance rules and hook constraints**
 
 - **Cause:** The `ANTIGRAVITY.md` file or the `rules/` folder are not properly loaded or present.
-- **Solution:** Go back to Step 1 and verify that the entire `.antigravity/` folder structure was copied to the project root and is strictly not being ignored inside `.gitignore`.
+- **Solution:** Verify if the initialization command successfully created the `.antigravity/` structure. Ensure you are using the latest version and the folders aren't being blocked by your `.gitignore` file.
 
 **"Unsupported provider or authentication error"**
 

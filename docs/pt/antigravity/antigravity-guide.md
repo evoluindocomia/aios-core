@@ -4,11 +4,11 @@ Bem-vindo ao guia passo-a-passo definitivo para iniciar no ambiente **Antigravit
 
 ---
 
-## 1. Setup Inicial e Resolução de Gaps
+## 1. Instalação e Setup Inicial
 
-Atualmente, o comando `aios-core init` pode não copiar todos os arquivos do ambiente `.antigravity/` para o seu workspace por limitações técnicas no empacotamento (`package.json`). Siga os passos abaixo para garantir uma instalação perfeita.
+A partir das versões mais recentes, o comando `aios-core init` já configura automaticamente o ambiente `.antigravity/` no seu workspace e a sincronização com as IDEs está habilitada por padrão.
 
-### PASSO A PASSO DA INSTALAÇÃO SEGURA
+### PASSO A PASSO DA INSTALAÇÃO
 
 1. **Instale o AIOS normalmente no seu diretório:**
 
@@ -17,15 +17,18 @@ Atualmente, o comando `aios-core init` pode não copiar todos os arquivos do amb
    cd meu-projeto
    ```
 
-2. **Copie o ambiente Antigravity (WORKAROUND GAP-02):**
-   Caso a pasta `.antigravity/` não tenha sido copiada completamente, você deve copiar o diretório fonte `.antigravity/` inteiro (que inclui `agents/`, `rules/`, `skills/`, `workflows/`, `templates/` e o arquivo `ANTIGRAVITY.md`) da origem do `aios-core` para a raiz do seu `meu-projeto`.
+   _Nota:_ O diretório `.antigravity/` (incluindo `agents/`, `rules/`, `skills/`, `workflows/`, `templates/` e o arquivo `ANTIGRAVITY.md`) será copiado automaticamente para o seu novo projeto.
 
-3. **Sincronização com a IDE (WORKAROUND GAP-03):**
-   Se o comando de sincronização (`npm run sync:ide`) ou as rotinas de _lint-staged_ não incluírem automaticamente as pastas do Antigravity, certifique-se de adicioná-las manualmente nas configurações do projeto caso perceba alguma dessincronização entre o `MEMORY.md` e a sua IDE.
+2. **Sincronização com a IDE:**
+   A sincronização já inclui o perfil do Antigravity nativamente. Execute a validação se necessário:
+
+   ```bash
+   npm run validate:antigravity-sync
+   ```
 
 ---
 
-## 2. Configurando as Chaves da API (GAP-04)
+## 2. Configurando as Chaves da API
 
 Para que o Antigravity utilize as engines de IA e as integrações mais avançadas do ecossistema AIOS (como geradores de interface e pesquisa na web), você precisa garantir que o provider principal seja o Gemini e que a chave de API esteja presente no seu ambiente.
 
@@ -71,7 +74,7 @@ Para acionar a magia do AIOS, seu ponto de partida sempre deve ser acionar o wor
 **O agente não está respeitando as regras governacionais e de Hook**
 
 - **Causa:** O arquivo `ANTIGRAVITY.md` ou a pasta `rules/` não estão devidamente presentes.
-- **Solução:** Volte ao Passo 1 e certifique-se de que a estrutura `.antigravity/` foi copiada completamente para a raiz e não está bloqueada pelo seu arquivo `.gitignore`.
+- **Solução:** Verifique se o comando de inicialização criou a estrutura adequadamente ou se a inicialização ocorreu com a versão mais recente e se os arquivos não estão sendo ignorados pelo `.gitignore`.
 
 **"Provider não suportado ou erro de autenticação"**
 
