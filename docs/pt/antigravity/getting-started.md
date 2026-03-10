@@ -295,6 +295,7 @@ Esta opção é ideal para inspecionar o código linha a linha usando _breakpoin
 
 ## Próximos Passos
 
+- [Processo Passo a Passo: Novo Projeto](./processo-passo-a-passo-novo-projeto.md)
 - [Sistema de Agentes](./agents/overview.md) — Hierarquia completa dos 28+ agentes
 - [Rules e Governance](./rules/overview.md) — Regras de comportamento e segurança
 - [Workflows](./workflows/overview.md) — Os 14 workflows e quando usar cada um

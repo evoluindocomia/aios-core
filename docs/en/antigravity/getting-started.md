@@ -295,6 +295,7 @@ This option is ideal for inspecting the code line by line using breakpoints in y
 
 ## Next Steps
 
+- [Step-by-Step Process: New Project](./processo-passo-a-passo-novo-projeto.md)
 - [Agent System](./agents/overview.md) — Full hierarchy of 28+ agents
 - [Rules & Governance](./rules/overview.md) — Behavioral rules and safety checkpoints
 - [Workflows](./workflows/overview.md) — All 14 workflows and when to use each
